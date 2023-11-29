@@ -1,0 +1,181 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Submition
+{% endblock %}
+
+{% block main %}
+
+<nav class="bg-light border navbar navbar-expand-md navbar-light">
+    <div class="container-fluid">
+        <h3 class="navbar-brand">
+            <span class="blue">Today's Lectures!</span>
+        </h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Course</th>
+            <th scope="col">Date</th>
+            <th scope="col">Lecture's Time</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for row in table %}
+        <tr>
+            <td>
+                {{ row["name"] }}
+            </td>
+            <td>
+                {{ row["day"] }} / {{ row["month"] }}
+            </td>
+            <td>
+                {{ row["hour"] }}
+            </td>
+
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+</nav>
+
+    <form id="attendanceForm" action="/quote" method="post">
+
+        <input name="symbol" type="hidden" id="answer">
+        <input type="hidden" name="latitude" id="latitude" value="">
+        <input type="hidden" name="longitude" id="longitude" value="">
+
+
+        <nav class="bg-light border navbar navbar-expand-md navbar-light">
+            <div class="container-fluid">
+                <h3 class="navbar-brand">
+                    <span class="blue">Semester's Courses</span>
+                </h3>
+            </div>
+        </nav>
+    <!-- CYBER  -->
+        <nav class="bg-light border navbar navbar-expand-md navbar-light">
+            <div class="container-fluid">
+                <h3 class="navbar-brand">
+                    <span class="blue">C</span><span class="red">Y</span><span class="yellow">B</span><span class="green">E</span><span class="red">R</span> <span class="blue">S</span><span class="red">E</span><span class="yellow">C</span><span class="green">U</span><span class="red">R</span><span class="blue">I</span><span class="red">T</span><span class="yellow">Y</span>
+                </h3>
+                <button class="btn btn-primary" type="submit" onclick="getLocation()" id="first" value="CYBER">Submit</button>
+            </div>
+        </nav>
+
+    <!-- PYTHON -->
+        <nav class="bg-light border navbar navbar-expand-md navbar-light">
+            <div class="container-fluid">
+                <h3 class="navbar-brand">
+                    <span class="blue">P</span><span class="red">Y</span><span class="yellow">T</span><span class="green">H</span><span class="red">O</span><span class="blue">N</span>
+                </h3>
+                <button class="btn btn-primary" type="submit" onclick="getLocation()" id="second" value="PYTHON">Submit</button>
+            </div>
+        </nav>
+
+    <!-- ENGLISH -->
+        <nav class="bg-light border navbar navbar-expand-md navbar-light">
+            <div class="container-fluid">
+                <h3 class="navbar-brand">
+                    <span class="blue">E</span><span class="red">N</span><span class="yellow">G</span><span class="green">L</span><span class="red">I</span><span class="blue">S</span><span class="red">H</span>
+                </h3>
+                <button class="btn btn-primary" type="submit" onclick="getLocation()" id="third" value="ENGLISH">Submit</button>
+                <input type="hidden" name="latitude" id="latitude" value="">
+                <input type="hidden" name="longitude" id="longitude" value="">
+
+            </div>
+        </nav>
+    <!-- PHYSICS -->
+        <nav class="bg-light border navbar navbar-expand-md navbar-light">
+            <div class="container-fluid">
+                <h3 class="navbar-brand">
+                    <span class="blue">P</span><span class="red">H</span><span class="yellow">Y</span><span class="green">S</span><span class="red">C</span><span class="blue">S</span>
+
+                </h3>
+                <button class="btn btn-primary" type="submit" onclick="getLocation()" id="forth" value="PHYSICS">Submit</button>
+
+            </div>
+        </nav>
+
+    <!-- MATHS -->
+        <nav class="bg-light border navbar navbar-expand-md navbar-light">
+            <div class="container-fluid">
+                <h3 class="navbar-brand">
+                    <span class="blue">M</span><span class="red">A</span><span class="yellow">T</span><span class="green">H</span><span class="red">S</span>
+
+                </h3>
+                <button class="btn btn-primary" type="submit" onclick="getLocation()" id="fifth" value="MATHS">Submit</button>
+                <input type="hidden" name="latitude" id="latitude" value="">
+                <input type="hidden" name="longitude" id="longitude" value="">
+
+            </div>
+        </nav>
+
+    <!-- IT -->
+        <nav class="bg-light border navbar navbar-expand-md navbar-light">
+            <div class="container-fluid">
+                <h3 class="navbar-brand">
+                    <span class="blue">I</span><span class="red">T</span>
+
+                </h3>
+                <button class="btn btn-primary" type="submit" onclick="getLocation()" id="sixth" value="IT">Submit</button>
+                <input type="hidden" name="latitude" id="latitude" value="">
+                <input type="hidden" name="longitude" id="longitude" value="">
+
+            </div>
+        </nav>
+
+    </form>
+
+
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function showPosition(position) {
+        // Add hidden input fields for latitude and longitude
+            document.getElementById("latitude").value = position.coords.latitude;
+            document.getElementById("longitude").value = position.coords.longitude;
+
+        // Submit the form
+            document.getElementById("attendanceForm").submit();
+        }
+
+        let first = document.getElementById("first");
+        first.addEventListener('click', function() {
+            first = first.value;
+            document.querySelector("#answer").value = first;
+        });
+        let second = document.getElementById("second");
+        second.addEventListener('click', function() {
+            second = second.value;
+            document.querySelector("#answer").value = second;
+        });
+        let third = document.getElementById("third");
+        third.addEventListener('click', function() {
+            third = third.value;
+            document.querySelector("#answer").value = third;
+        });
+        let forth = document.getElementById("forth");
+        forth.addEventListener('click', function() {
+            forth = forth.value;
+            document.querySelector("#answer").value = forth;
+        });
+        let fifth = document.getElementById("fifth");
+        fifth.addEventListener('click', function() {
+            fifth = fifth.value;
+            document.querySelector("#answer").value = fifth;
+        });
+        let sixth = document.getElementById("sixth");
+        sixth.addEventListener('click', function() {
+            sixth = sixth.value;
+            document.querySelector("#answer").value = sixth;
+        });
+    </script>
+{% endblock %}

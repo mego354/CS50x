@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+<nav class="bg-light border navbar navbar-expand-md navbar-light">
+    <div class="container-fluid">
+        <h3 class="navbar-brand">
+            <span class="blue">ID : {{ database[0]["id"] }}</span>
+            <br>
+            <span class="blue">Name : {{ database[0]["name"] }}</span>
+            <br>
+            <span class="blue">Total Attendance : {{ database[0]["attendance"] }}</span>
+        </h3>
+    </div>
+</nav>
+    <table class="table">
+        
+            <thead>
+                <tr>
+                    <th scope="col">Physics</th>
+                    <th scope="col">Python</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        {{ database[0]["PHYSICS"] }}
+                    </td>
+                    <td>
+                        {{ database[0]["PYTHON"] }}
+                    </td>
+                </tr>
+            </tbody>
+
+<!--  -->
+            <thead>
+                <tr>
+                    <th scope="col">Mathematics</th>
+                    <th scope="col">English</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        {{ database[0]["MATHS"] }}
+                    </td>
+                    <td>
+                        {{ database[0]["ENGLISH"] }}
+                    </td>
+
+                </tr>
+            </tbody>
+<!--  -->
+            <thead>
+                <tr>
+                    <th scope="col">Cyber Security</th>
+                    <th scope="col">IT</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        {{ database[0]["CYBER"] }}
+                    </td>
+                    <td>
+                        {{ database[0]["IT"] }}
+                    </td>
+
+                </tr>
+            </tbody>
+    </table>
+{% endblock %}

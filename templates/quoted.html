@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Attend
+{% endblock %}
+
+{% block main %}
+<form action="/quoted" method="post">
+    <nav class="bg-light border navbar navbar-expand-md navbar-light">
+        <div class="container-fluid">
+            <h2 class="navbar-brand">
+                <span class="blue">{{ name }} !</span>
+            </h2>
+        </div>
+        <div class="container-fluid">
+            <h2 class="navbar-brand">
+                <span class="blue">D</span><span class="red">A</span><span class="yellow">T</span><span class="green">E</span>
+                <span class="blue">{{ day }}</span><span class="yellow">/</span><span class="red">{{ date}}</span>
+            </h2>
+        </div>
+        <div class="container-fluid">
+            <h2 class="navbar-brand">
+                <button class="btn btn-primary" type="submit" autofocus >Submit</button>
+            </h2>
+        </div>
+    </nav>
+</form>
+{% endblock %}
