@@ -11,6 +11,7 @@ import datetime
 import csv
 from helpers import apology, login_required
 from lecturess import lecturess
+from pytz import timezone
 # Configure application
 app = Flask(__name__)
 
@@ -43,9 +44,16 @@ def index():
         "SELECT id, name, attendance, CYBER, ENGLISH, PYTHON, MATHS, IT, PHYSICS FROM student WHERE id = ?",
         user_id,
     )
-
-    flash("welcome!")
-    return render_template("index.html", database=student_db)
+    if user_id != 6: #ADJUST FOR ADMIN ID
+        n = student_db[0]["name"]
+        flash(f"welcome {n} !")
+        return render_template("index.html", database=student_db)
+    else :
+        look = db.execute(
+            "select id, name, attendance, CYBER, ENGLISH, PYTHON, MATHS, IT, PHYSICS from student; ")
+        n = student_db[0]["name"]
+        flash(f"welcome {n} !")
+        return render_template("index.html", database=student_db, look=look, look2=look[0])
 
 #########################################
 
@@ -58,7 +66,7 @@ def history():
         "SELECT *  FROM submit WHERE id = ? ORDER by time DESC",
         user_id,
     )
-    time2 = datetime.datetime.now()
+    time2 = datetime.datetime.now(timezone('Egypt'))
     time2 = time2.strftime("%y")
     flash("! Take a good look !")
     return render_template("history.html", database=history_db, time2=time2)
@@ -123,13 +131,14 @@ def register():
         elif password != confirmation:
             return apology("please confirm the password correctly")
         else:
-            hash = generate_password_hash(password)
-        try:
-            new_user = db.execute(
-                "INSERT INTO student (name, hash) VALUES (?, ?)", username, hash
-            )
-        except:
-            return apology("Username already exists")
+            new = db.execute("SELECT * FROM student WHERE name = ?", username)
+            if not new:
+                hash = generate_password_hash(password)
+                new_user = db.execute(
+                    "INSERT INTO student (name, hash) VALUES (?, ?)", username, hash
+                )
+            else:
+                return apology("Username already exists")
 
         session["user_id"] = new_user
 
@@ -189,7 +198,7 @@ def password():
 def quote():
     """Get stock quote."""
     if request.method == "GET":
-        timee = datetime.datetime.now()
+        timee = datetime.datetime.now(timezone('Egypt'))
         now_d = timee.strftime("%d")
         now_d = int(now_d)
         now_m = timee.strftime("%m")
@@ -225,7 +234,7 @@ def quote():
 
         file = open("lectures.csv", "r")
         fi_le = csv.DictReader(file)
-        timee = datetime.datetime.now()
+        timee = datetime.datetime.now(timezone('Egypt'))
         now_d = timee.strftime("%d")
         now_d = int(now_d)
         now_m = timee.strftime("%m")
@@ -243,6 +252,7 @@ def quote():
                     now_h = int(timee.strftime("%H"))
 
                     if now_h < time:
+                        flash(timee)
                         return apology("this lecture's time is NOT now")
                     elif now_h > time + 17:
                         return apology("unfortunatelly you have missed this class!")
@@ -285,7 +295,7 @@ def quoted():
         if first:
             return apology("you,ve submitted before")
         else:
-            time1 = datetime.datetime.now()
+            time1 = datetime.datetime.now(timezone('Egypt'))
             db.execute(
                     "insert into submit (id,lecture,month,day,hour,time) VALUES (?,?,?,?,?,?)",
                     user_id,
