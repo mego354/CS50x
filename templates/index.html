@@ -16,8 +16,8 @@
         </h3>
     </div>
 </nav>
+
     <table class="table">
-        
             <thead>
                 <tr>
                     <th scope="col">Physics</th>
@@ -71,5 +71,24 @@
 
                 </tr>
             </tbody>
+            <table class="table">
+                <thead>
+                        <tr>
+                            {% for row in look2 %}
+                                <th scope="col">{{ row }}</th>
+                            {% endfor %}
+                        </tr>
+                </thead>
+                <tbody>
+                    {% for row in look %}
+                        <tr>
+                            {% for ro in row %}
+                                <td>
+                                    {{ row[ro] }}
+                                </td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
     </table>
 {% endblock %}
