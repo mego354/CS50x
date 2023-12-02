@@ -14,15 +14,19 @@ for file in file1:
 filer1.close()
 ################################
 lectures = []
-for i in range(30):
-    for lec in defult:
-        lecture = []
-        lecture.append(int(lec[0]) + (i * 6))
-        lecture.append(lec[1])
-        lecture.append(int(lec[2]))
-        lecture.append(int(lec[3]) + i)
-        lecture.append(lec[4])
-        lectures.append(lecture)
+for m in range(3):
+    for i in range(30):
+        for lec in defult:
+            lecture = []
+            lecture.append((int(lec[0]) + (i * 6)) + (m*180))
+            lecture.append(lec[1])
+            t = (int(lec[2])+m)%12
+            if t == 0:
+                t = 12
+            lecture.append(t)
+            lecture.append(int(lec[3]) + i)
+            lecture.append(lec[4])
+            lectures.append(lecture)
 ################################
 filer2 = open("lectures.csv", "w")
 file2 = csv.writer(filer2)
