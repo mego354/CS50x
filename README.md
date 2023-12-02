@@ -52,4 +52,12 @@ student contains row for every and each student by their id and name and 6 cours
 lectures table get updated every time the page refresh itself and it gets all the the data of lecturs from the lectures.csv file so the admin could add any lecture anytime just by typing the lecture's name, month,day,time and it be added to the database and any student could submit their attendace once the acual date,time is the same for the lecture and their location is in the universty area
 submit table contains all the data for submiting classes for each student so that whenever any professor needs to get the amount of attendance of any student that would be easy by selecting the student id grouped by the lecture's name
 
-<!-- THANKS CS50 ...​ -->
+USAGE: 
+the admin has to modify the lectures every 3 months by opening lectures.csv 
+then delete all lectures and write each subject with which it's id,month,day,hour only once for each subject
+after that run python add.py which would add every lecture for the next 3 months 
+restart running flask app 
+done!
+do not forget to adjust the location for the universty also the limit of hours during which the student would submit their attendance.
+
+the app's been hosted for testing purpose at : http://megahd.pythonanywhere.com/
