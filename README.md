@@ -1,103 +1,81 @@
- BATU Attendance
- 
- Video Demo:  <https://youtu.be/oVbF4yntRyc>
- 
- Description:
- An idea for organizing student attendance management​:
+# BATU Attendance
 
-WHAT WE NEED TO CONTROL​:
+## Video Demo
+[Watch the video demonstration](https://youtu.be/oVbF4yntRyc)
 
-1.WHO CAN SUBMIT THEIR ATTENDANCE
-​
+## Description
+BATU Attendance is a web application designed for efficient student attendance management. It allows for control over:
 
-2.WHEN DOES THAT ACUALLY HAPPEN
+1. Who can submit their attendance.
+2. When attendance submissions can occur.
+3. The specific location where attendance is submitted.
+4. Storage of attendance data.
+5. Management and utilization of stored data.
 
-​
-3.DETRMINE A SPECIFIC LOCATION​
+## Implementation Steps
+### 1. Build a Simple Web Application
+The initial step involves creating a web application with the necessary functionalities.
 
-4.DETRMINE A WAY TO STORED DATA​
+### 2. Set Permissions
+Assign appropriate permissions to ensure the smooth operation of subsequent steps.
 
-5.HOW TO DEAL WITH THE STORED DATA​
+### 3. Database Setup
+Establish a robust database to store and manage attendance data.
 
-HOW TO DO THAT ?​
+### 4. Data Collection
+Collect data from the web application and store it in the database.
 
-FIRST OF ALL : is to build a simple Web application​
+### 5. Daily Data Management
+Assign a specialist to manage the daily data handling tasks for both the web page and the database.
 
-THEN : give all the needed permissions to become handy for the next steps​
+## Web Application Features
+The web application includes the following pages:
 
-NO DOUBT : we need a perfect database​
+- **Register Page**
+- **Login Page**
+- **Attendance Page**
+- **History Page**
+- **Reset Password Page**
 
-AFTER THAT : we need to collect the data from that web in the --> DATABASE​
+### Attendance Page Details
+The Attendance Page is specifically designed for data submission by students, overseen by a specialist. Key functionalities include:
 
-AS A FINAL STEP : 
-must assign the daily tasks to a  specialist who would handle the page's data and the database as well ​
+- A submit button that students can click when it appears for them.
+- The submit button records the date and location of the submission.
+- The backend database stores all submitted data.
 
-THE WEB APPLICATION​ :
-WEB APPLICATION  MUST HAVE FIVE THING​
+## Detailed Workflow
+- **User Interaction**: Students log in and interact with the Attendance Page.
+- **Backend Operations**: 
+  - Modify the lectures displayed to the students.
+  - Design a method for easy data collection and modification.
+  - Ensure location data is stored to prevent manipulation.
+  - Link each account to a student ID using session data ("cookies").
+  - Enforce location-based attendance within the university area.
 
-REGISTER PAGE
-​
-LOGIN PAGE​
+### Final Output
+- Each student has a profile with their data and attendance history.
+- A daily lecture schedule is available on the web page.
+- The database holds a comprehensive attendance history for each student.
+- A streamlined and effective solution for attendance data collection and problem-solving.
 
-ATTENDANCE PAGE​
+## Database Structure
+The database consists of three tables: `student`, `lectures`, and `submit`.
 
-HISTORY PAGE​
+### Student Table
+- Rows: Each student by ID and name.
+- Courses: Physics, Python, English, IT, Mathematics, Cyber Security.
+- Updates: When a student submits attendance, both the course-specific score and overall attendance count increase.
 
-RESET PASSWORD PAGE​
+### Lectures Table
+- Updates with each page refresh, fetching data from `lectures.csv`.
+- Admins can add lectures by specifying the name, date, and time.
+- Students can submit attendance if the current date and time match the lecture schedule and they are within the university area.
 
-​ATTENDACE PAGE​
+### Submit Table
+- Records each attendance submission.
+- Facilitates easy retrieval of attendance records for professors by student ID and lecture name.
 
-THE ATTENDACE PAGE INFO:​
-
-The only page that will get manipulated by the specialist ​
-
-The student can click on submit button when it appears for them​
-
-That submit button MUST provide the date and location by which it has been clicked​
-
-In the backend of that page there is a database that would gain all of this data.​
-
-DETAILS for how it works​:
-
-We've handled the login part and how the user could activate with the page​
-
-For the backend and the most important part :​
-
-
-important to modify the lectures that appear for the student ​
-
-Collecting the data would need a good method and design to be easily modified​
-
-The most important thing is to find a way to store the location as well in the database​
-
-To prevent any manipulating  from the students every account would be connected to the id while registering the account and that’s would be easy by the session's data 
-
-"cookies"​ and while execute the attendance for any lecture the student MUST be in the universty's area
-
-AS A FINAL LOOK WE CAN SEE:​
-
-Every student has their own profile that contains their data and attendance history ​
-
-A web page contains the lectures for the day​
-
-Data base contains all history of attendance for each student id​
-
-A perfect way to collect data and solve a problem in such a smooth way ​
-
-databases contains 3 tables
-
-student,lectures,submit
-
-student contains row for every and each student by their id and name and 6 courses as physics, python, english, it, mathematics, cyber security they all get updated once the student vlick submit for any class to be added a 1 score for the class column and one for the attendance column because attendance column contains the amount of attendance in all classes togather
-
-lectures table get updated every time the page refresh itself and it gets all the the data of lecturs from the lectures.csv file so the admin could add any lecture anytime just by typing the lecture's name, month,day,time and it be added to the database and any student could submit their attendace once the acual date,time is the same for the lecture and their location is in the universty area
-
-submit table contains all the data for submiting classes for each student so that whenever any professor needs to get the amount of attendance of any student that would be easy by selecting the student id grouped by the lecture's name
-
-
-
-NOTE THAT THE DETERMINATION OF THE LOCATION HAS BEEN TURNED OFF TO BE AVAILABLE FOR EVERYONE,
-AND THE LIMIT OF HOURS WITHIN YOU CAN ATTEND HAS BEEN UPDATED TO 18 HOURS INSTEED OF 2 JUST FOR TESTING PURPOSE
-
-You CAN TRY THE PAGE HERE : http://megahd.pythonanywhere.com/
-
+## Testing Note
+- **Location Determination**: Disabled to allow access for everyone.
+- **Attendance Time Limit**: Extended to 18 hours instead of 2 for testing purposes.
