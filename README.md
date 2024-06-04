@@ -4,7 +4,7 @@
 [Watch the video demonstration](https://youtu.be/oVbF4yntRyc)
 
 ## Description
-BATU Attendance is a web application designed for efficient student attendance management. It allows for control over:
+BATU Attendance is a web application developed as the final project for CS50x. It aims to efficiently manage student attendance by implementing controls over:
 
 1. Who can submit their attendance.
 2. When attendance submissions can occur.
